@@ -52,10 +52,6 @@ body{
     border-right: 20px solid transparent;
     position: relative;
     z-index: -1;
-    animation-name: look-about;
-    animation-duration: 3s;
-    animation-play-state: inherit;
-    animation-iteration-count: infinite;
 }
 .ear-l{
     bottom: 35px;
@@ -82,10 +78,6 @@ body{
     left: 0px;
     bottom: 0px;
     position: relative;
-    animation-name: look-about;
-    animation-duration: 3s;
-    animation-play-state: inherit;
-    animation-iteration-count: infinite;
 }
 
 .eye-l,.eye-r{
@@ -171,7 +163,9 @@ body{
   left: 100px;
   border-radius: 0 20px 20px 0;
   z-index: -1;
+  animation: wiggle 2s infinite;
 }
+
 .shadow{
   background-color: rgba(8,8,8,0,.05);
   height: 30px;
@@ -183,12 +177,46 @@ body{
   z-index: -1;
 }
 
-@keyframes look-about {
-    0% {right: 20px;}
-    5% {right: 30px;}
-    30% {right: 30px;}
-    35% {right: 10px;}
-    60% {right: 10px;}
-    65% {right: 20px;}
-    100% {right: 20px;}
+@keyframes wiggle {
+    0% {transform: rotate(10deg)}
+    3% {transform: rotate(9deg)}
+    4% {transform: rotate(6deg)}
+    5% {transform: rotate(0deg)}
+    100% {transform: rotate(0deg)}
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.waviy {
+  position: relative;
+  height: 600px;
+  -webkit-box-reflect: below linear-gradient(transparent, rgba(0,0,0,.2));
+}
+.waviy span {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  color: #000;
+  text-transform: uppercase;
+  animation: waviy 3s infinite;
+  animation-delay: calc(.1s * var(--i))
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
 }
